@@ -41,13 +41,10 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
-
-	virtual void onExit();
-	virtual void onEnter();
 	//Put Init Functions here
-	virtual bool init();
 	void initSprites();
 	void initKeyboardListener();
+
     //put Update functions here
 
     //Put Callbacks here?

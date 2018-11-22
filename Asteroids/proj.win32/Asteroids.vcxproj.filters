@@ -44,6 +44,9 @@
     <ClInclude Include="inputHandler.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="SpaceShip.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">

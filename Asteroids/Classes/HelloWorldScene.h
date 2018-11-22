@@ -41,6 +41,13 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
+	//Put Init Functions here
+
+    //put Update functions here
+
+    //Put Callbacks here?
 };
+
+
 
 #endif // __HELLOWORLD_SCENE_H__

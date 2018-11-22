@@ -24,6 +24,9 @@
     <ClCompile Include="inputHandler.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Desktop\math project 3\Upset Avians\Jackson%27s Upset Avians\Classes\character.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -45,6 +48,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="SpaceShip.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Desktop\math project 3\Upset Avians\Jackson%27s Upset Avians\Classes\character.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

@@ -24,7 +24,10 @@
     <ClCompile Include="inputHandler.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Desktop\math project 3\Upset Avians\Jackson%27s Upset Avians\Classes\character.cpp">
+    <ClCompile Include="Characters.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="SpaceShip.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,7 +53,7 @@
     <ClInclude Include="SpaceShip.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\Desktop\math project 3\Upset Avians\Jackson%27s Upset Avians\Classes\character.h">
+    <ClInclude Include="Characters.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

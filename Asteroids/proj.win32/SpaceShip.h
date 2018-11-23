@@ -1,20 +1,21 @@
 #pragma once
 #include "cocos2d.h"
+#include "Characters.h"
+
 using namespace cocos2d;
-class Character
+
+//enum birdState
+//{
+//	onSlingshot,
+//	airborne
+//};
+
+class SpaceShip : public Characters
 {
 public:
-	Character();
-	virtual ~Character();
-	Character(Vec2 position, std::string spritePath);
-	void update(float deltaTime);//get delta time so we don't have to keep calling elapsed time per seconds
-	Sprite* getSprite();
-	PhysicsBody* getBody();
-	Vec2 getPosition();
-	void kill(float delay = 0.0f);
-	Vec2 position;
-	Vec2 acceleration;
-	Vec2 velocity;
-protected:
-	Sprite* sprite;
+	SpaceShip(Vec2 position);
+	/*birdState getState()*/;
+	/*void setState(birdState newState);*/
+private:
+	/*birdState state;*/
 };

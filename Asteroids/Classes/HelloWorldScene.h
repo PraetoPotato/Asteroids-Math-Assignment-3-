@@ -35,19 +35,32 @@ public:
     static cocos2d::Scene* createScene();
 
     virtual bool init();
-    
-    // a selector callback
-    void menuCloseCallback(cocos2d::Ref* pSender);
-    
+	void menuCloseCallback(Ref* pSender);
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
 	//Put Init Functions here
 	void initSprites();
 	void initKeyboardListener();
-
+	void initListeners();
+	
     //put Update functions here
-
+	void spawnShip();
     //Put Callbacks here?
+	void keyDownCallback(EventKeyboard::KeyCode keycode, Event* event);
+	void keyUpCallback(EventKeyboard::KeyCode keycode, Event* event);
+	bool onContactBeginCallback(PhysicsContact& contact);
+private:
+	//Engine
+	Director* director;
+
+	//Event listeners
+	EventListenerKeyboard* keyboardListener;
+
+	//sprites
+	Sprite* ship;
+	//Vectors of asteroids N Lazers
+
+	
 };
 
 

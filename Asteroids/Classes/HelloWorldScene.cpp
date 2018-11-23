@@ -24,6 +24,7 @@
 
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
+#include "proj.win32/Characters.h"
 
 USING_NS_CC;
 
@@ -44,11 +45,13 @@ bool HelloWorld::init()
 {
     //////////////////////////////
     // 1. super init first
+	//Ensure the parent init function was called first. If it wasn't, exit this one
     if ( !Scene::init() )
     {
         return false;
     }
 
+	//Get the director from cocos so we can use it when needed
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
@@ -83,30 +86,12 @@ bool HelloWorld::init()
     /////////////////////////////
     // 3. add your codes below...
 
-    // add a label shows "Hello World"
-    // create and initialize a label
+	//Init the event handlers
+	initListeners();
+	initSprites();
 
-
-
-/*
-    auto label = Label::createWithTTF("Hello World", "fonts/Marker Felt.ttf", 24);
-    if (label == nullptr)
-    {
-        problemLoading("'fonts/Marker Felt.ttf'");
-    }
-    else
-    {
-        // position the label on the center of the screen
-        label->setPosition(Vec2(origin.x + visibleSize.width/2,
-                                origin.y + visibleSize.height - label->getContentSize().height));
-
-        // add the label as a child to this layer
-        this->addChild(label, 1);
-    }
-	*/
-
-
-
+	//Allow for the update() function to be called by cocos
+	this->scheduleUpdate();
 
     // add "HelloWorld" splash screen"
     auto sprite = Sprite::create("background.png");
@@ -123,6 +108,12 @@ bool HelloWorld::init()
         this->addChild(sprite, 0);
     }
     return true;
+}
+void HelloWorld::initSprites()
+{
+	ship= Sprite::create("Asteroids/Ship/Space_Ship.png");
+	ship->setPosition(100, 100);
+	this->addChild(ship, 1);//addChild-This is basically like the addToSpriteToDrawList in the previous math assignment parameters are the sprite and the layer number
 }
 
 
@@ -142,3 +133,37 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 
 
 }
+
+
+
+void HelloWorld::initListeners()
+{
+	//Init the keyboard listener
+	initKeyboardListener();
+
+}
+
+void HelloWorld::initKeyboardListener()
+{
+	//Create the keyboard listener
+	keyboardListener = EventListenerKeyboard::create();
+
+	//Setting up callbacks
+	keyboardListener->onKeyPressed = CC_CALLBACK_2(HelloWorld::keyDownCallback, this);
+	keyboardListener->onKeyReleased = CC_CALLBACK_2(HelloWorld::keyUpCallback, this);
+
+	//Add the keyboard listener to the dispatcher
+	_eventDispatcher->addEventListenerWithSceneGraphPriority(keyboardListener, this);
+}
+
+void HelloWorld::keyDownCallback(EventKeyboard::KeyCode keyCode, Event* event)//keydown
+{
+
+}
+
+void HelloWorld::keyUpCallback(EventKeyboard::KeyCode keyCode, Event* event)//key up(releasing key)
+{
+
+
+}
+

@@ -25,6 +25,9 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
 #include "proj.win32/Characters.h"
+#include "proj.win32/SpaceShip.h"
+#include <iostream>
+  
 
 USING_NS_CC;
 
@@ -113,6 +116,7 @@ void HelloWorld::initSprites()
 {
 	ship= Sprite::create("Asteroids/Ship/Space_Ship.png");
 	ship->setPosition(100, 100);
+	ship->setScale(0.25f);
 	this->addChild(ship, 1);//addChild-This is basically like the addToSpriteToDrawList in the previous math assignment parameters are the sprite and the layer number
 }
 
@@ -158,7 +162,30 @@ void HelloWorld::initKeyboardListener()
 
 void HelloWorld::keyDownCallback(EventKeyboard::KeyCode keyCode, Event* event)//keydown
 {
+	if (keyCode == EventKeyboard::KeyCode::KEY_UP_ARROW)
+	{
+		Vec2 pos(0, 10);
 
+		ship->setPosition(ship->getPosition() + (pos));
+		
+	
+		
+	}
+	else if (keyCode == EventKeyboard::KeyCode::KEY_DOWN_ARROW)
+	{
+		Vec2 pos(0, -10);
+		ship->setPosition(ship->getPosition() + (pos));
+	}
+	else if (keyCode == EventKeyboard::KeyCode::KEY_LEFT_ARROW)
+	{
+		Vec2 pos(-10,0);
+		ship->setPosition(ship->getPosition() + (pos));
+	}
+	else if (keyCode == EventKeyboard::KeyCode::KEY_RIGHT_ARROW)
+	{
+		Vec2 pos(10, 0);
+		ship->setPosition(ship->getPosition() + (pos));
+	}
 }
 
 void HelloWorld::keyUpCallback(EventKeyboard::KeyCode keyCode, Event* event)//key up(releasing key)

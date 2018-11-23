@@ -27,6 +27,7 @@
 
 #include "cocos2d.h"
 #include "proj.win32/inputHandler.h"
+#include "proj.win32/Characters.h"
 
 
 class HelloWorld : public cocos2d::Scene
@@ -58,6 +59,7 @@ private:
 
 	//sprites
 	Sprite* ship;
+
 	//Vectors of asteroids N Lazers
 
 	

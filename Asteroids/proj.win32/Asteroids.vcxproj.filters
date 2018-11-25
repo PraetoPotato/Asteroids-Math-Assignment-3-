@@ -56,9 +56,6 @@
     <ClInclude Include="Characters.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="Timer.h">
-      <Filter>src</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">

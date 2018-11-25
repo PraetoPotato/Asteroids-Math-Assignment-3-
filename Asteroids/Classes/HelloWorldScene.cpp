@@ -27,9 +27,16 @@
 #include "proj.win32/Characters.h"
 #include "proj.win32/SpaceShip.h"
 #include <iostream>
+
+
   
 
 USING_NS_CC;
+
+bool isUp;
+bool isDown;
+bool isLeft;
+bool isRight;
 
 Scene* HelloWorld::createScene()
 {
@@ -39,6 +46,7 @@ Scene* HelloWorld::createScene()
 // Print useful error message instead of segfaulting when files are not there.
 static void problemLoading(const char* filename)
 {
+	
     printf("Error while loading: %s\n", filename);
     printf("Depending on how you compiled you might have to add 'Resources/' in front of filenames in HelloWorldScene.cpp\n");
 }
@@ -114,11 +122,15 @@ bool HelloWorld::init()
 }
 void HelloWorld::initSprites()
 {
-	ship= Sprite::create("Asteroids/Ship/Space_Ship.png");
-	ship->setPosition(100, 100);
-	ship->setScale(0.25f);
-	this->addChild(ship, 1);//addChild-This is basically like the addToSpriteToDrawList in the previous math assignment parameters are the sprite and the layer number
+	Characters spaceShip({ 100,100 }, "Asteroids/Ship/Space_Ship.png");
+	ship = spaceShip.getSprite();
+	speed = spaceShip.velocity;
+	this->addChild(ship, 2);
+	
+
+	//addChild-This is basically like the addToSpriteToDrawList in the previous math assignment parameters are the sprite and the layer number
 }
+
 
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
@@ -160,37 +172,86 @@ void HelloWorld::initKeyboardListener()
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(keyboardListener, this);
 }
 
+
+//Main update loop
+void HelloWorld::update(float deltaTime)
+{
+	//velocity += acceleration * deltaTime;
+	//position = ship->getPosition();
+	//position += velocity * deltaTime;
+	//ship->setPosition(position);
+
+	if (isUp == true)
+	{
+		velocity += Vec2(0, 1);
+		velocity += acceleration * deltaTime;
+		position = ship->getPosition();
+		position += velocity * deltaTime;
+		ship->setPosition(position);
+	}
+
+	if (isDown == true)
+	{
+		velocity += Vec2(0, -1);
+		velocity += acceleration * deltaTime;
+		position = ship->getPosition();
+		position += velocity * deltaTime;
+		ship->setPosition(position);
+	}
+}
 void HelloWorld::keyDownCallback(EventKeyboard::KeyCode keyCode, Event* event)//keydown
 {
+	//float dt = updateTimer->getElapsedTimeSeconds();
 	if (keyCode == EventKeyboard::KeyCode::KEY_UP_ARROW)
 	{
-		Vec2 pos(0, 10);
-
-		ship->setPosition(ship->getPosition() + (pos));
+		/*Vec2 pos(0, 10);*/
+		isUp = true;
 		
-	
 		
 	}
 	else if (keyCode == EventKeyboard::KeyCode::KEY_DOWN_ARROW)
 	{
-		Vec2 pos(0, -10);
-		ship->setPosition(ship->getPosition() + (pos));
+		/*Vec2 pos(0, -10);*/
+		isDown = true;
+
 	}
 	else if (keyCode == EventKeyboard::KeyCode::KEY_LEFT_ARROW)
 	{
-		Vec2 pos(-10,0);
-		ship->setPosition(ship->getPosition() + (pos));
+		//Vec2 pos(-10,0);
+		//ship->setPosition(ship->getPosition() + (pos));
 	}
 	else if (keyCode == EventKeyboard::KeyCode::KEY_RIGHT_ARROW)
 	{
-		Vec2 pos(10, 0);
-		ship->setPosition(ship->getPosition() + (pos));
+		//Vec2 pos(10, 0);
+		//ship->setPosition(ship->getPosition() + (pos));
 	}
 }
 
 void HelloWorld::keyUpCallback(EventKeyboard::KeyCode keyCode, Event* event)//key up(releasing key)
 {
+	if (keyCode == EventKeyboard::KeyCode::KEY_UP_ARROW)
+	{
+		/*Vec2 pos(0, 10);*/
+		isUp = false;
 
+
+	}
+	else if (keyCode == EventKeyboard::KeyCode::KEY_DOWN_ARROW)
+	{
+		/*Vec2 pos(0, -10);*/
+		isDown = false;
+
+	}
+	else if (keyCode == EventKeyboard::KeyCode::KEY_LEFT_ARROW)
+	{
+		//Vec2 pos(-10,0);
+		//ship->setPosition(ship->getPosition() + (pos));
+	}
+	else if (keyCode == EventKeyboard::KeyCode::KEY_RIGHT_ARROW)
+	{
+		//Vec2 pos(10, 0);
+		//ship->setPosition(ship->getPosition() + (pos));
+	}
 
 }
 

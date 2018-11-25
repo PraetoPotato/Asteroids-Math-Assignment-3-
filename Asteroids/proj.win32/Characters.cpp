@@ -1,17 +1,23 @@
 #include "Characters.h"
-#include <iostream>
+#include "2d/CCNode.h"
+
+#include <algorithm>
+#include <string>
+#include <regex>
+
+
+
 Characters::Characters() {}
 Characters::Characters(Vec2 position, std::string texturePath)
 {
 	sprite = Sprite::create(texturePath); //Load the handle
 	sprite->setPosition(position);
 	sprite->setScale(0.25f); //Scale the bird since it loads in quite large 
-	sprite->setAnchorPoint(Vec2(0.5f, 0.5f)); //Ensure the middle of the bird is the anchor point
+	sprite->setAnchorPoint(Vec2(0.5, 0.5));//the point which the sprite rotates around
 	auto body = PhysicsBody::createCircle((sprite->getSpriteFrame()->getRectInPixels().size.height) * 0.5f * 0.65f); //Use a circle since the bird is roughly circular
 	//auto body = PhysicsBody::createCircle(32.0f); //Use a circle since the bird is roughly circular
-	std::cout << sprite->getSpriteFrame()->getRectInPixels().size.height * sprite->getScale() * 0.5f << std::endl;
-	body->setContactTestBitmask(0xFFFFFFFF);
-	sprite->setPhysicsBody(body); //Connect the physics body and the sprite
+	/*std::cout << sprite->getSpriteFrame()->getRectInPixels().size.height * sprite->getScale() * 0.5f << std::endl;*/
+;
 }
 
 void Characters::update(float deltaTime)
@@ -26,9 +32,6 @@ Sprite* Characters::getSprite() {
 	return sprite;
 }
 
-PhysicsBody* Characters::getBody() {
-	return sprite->getPhysicsBody();
-}
 
 Vec2 Characters::getPosition() {
 	return sprite->getPosition();

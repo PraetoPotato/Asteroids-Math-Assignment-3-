@@ -27,7 +27,8 @@
 
 #include "cocos2d.h"
 #include "proj.win32/inputHandler.h"
-#include "proj.win32/Characters.h"
+
+
 
 
 class HelloWorld : public cocos2d::Scene
@@ -43,13 +44,18 @@ public:
 	void initSprites();
 	void initKeyboardListener();
 	void initListeners();
+	void initShip();
 	
     //put Update functions here
-	void spawnShip();
+	void update(float deltaTime);
+
     //Put Callbacks here?
 	void keyDownCallback(EventKeyboard::KeyCode keycode, Event* event);
 	void keyUpCallback(EventKeyboard::KeyCode keycode, Event* event);
 	bool onContactBeginCallback(PhysicsContact& contact);
+
+	//timerr *updateTimer;
+
 private:
 	//Engine
 	Director* director;
@@ -57,12 +63,19 @@ private:
 	//Event listeners
 	EventListenerKeyboard* keyboardListener;
 
+
 	//sprites
 	Sprite* ship;
 
 	//Vectors of asteroids N Lazers
 
-	
+	Vec2 speed;
+
+	Vec2 position;
+	Vec2 acceleration;
+	Vec2 velocity;
+
+
 };
 
 

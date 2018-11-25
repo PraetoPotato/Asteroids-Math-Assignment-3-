@@ -122,10 +122,9 @@ bool HelloWorld::init()
 }
 void HelloWorld::initSprites()
 {
-	Characters spaceShip({ 100,100 }, "Asteroids/Ship/Space_Ship.png");
-	ship = spaceShip.getSprite();
-	speed = spaceShip.velocity;
-	this->addChild(ship, 2);
+	shipp= new Characters({ 100,100 }, "Asteroids/Ship/Space_Ship.png");
+
+	this->addChild(shipp->getSprite(), 2);
 	
 
 	//addChild-This is basically like the addToSpriteToDrawList in the previous math assignment parameters are the sprite and the layer number
@@ -183,21 +182,18 @@ void HelloWorld::update(float deltaTime)
 
 	if (isUp == true)
 	{
-		velocity += Vec2(0, 1);
-		velocity += acceleration * deltaTime;
-		position = ship->getPosition();
-		position += velocity * deltaTime;
-		ship->setPosition(position);
+		shipp->velocity += Vec2(0, 1);
+		shipp->update(deltaTime);
+		//ship->setPosition(position);
 	}
 
 	if (isDown == true)
 	{
-		velocity += Vec2(0, -1);
-		velocity += acceleration * deltaTime;
-		position = ship->getPosition();
-		position += velocity * deltaTime;
-		ship->setPosition(position);
+		shipp->velocity += Vec2(0, -1);
+		shipp->update(deltaTime);
+		/*ship->setPosition(position);*/
 	}
+	shipp->update(deltaTime);
 }
 void HelloWorld::keyDownCallback(EventKeyboard::KeyCode keyCode, Event* event)//keydown
 {

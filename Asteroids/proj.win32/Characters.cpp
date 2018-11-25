@@ -17,6 +17,7 @@ Characters::Characters(Vec2 position, std::string texturePath)
 	auto body = PhysicsBody::createCircle((sprite->getSpriteFrame()->getRectInPixels().size.height) * 0.5f * 0.65f); //Use a circle since the bird is roughly circular
 	//auto body = PhysicsBody::createCircle(32.0f); //Use a circle since the bird is roughly circular
 	/*std::cout << sprite->getSpriteFrame()->getRectInPixels().size.height * sprite->getScale() * 0.5f << std::endl;*/
+	
 ;
 }
 

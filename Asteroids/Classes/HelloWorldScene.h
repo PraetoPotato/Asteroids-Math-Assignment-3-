@@ -27,6 +27,7 @@
 
 #include "cocos2d.h"
 #include "proj.win32/inputHandler.h"
+#include "proj.win32/Characters.h"
 
 
 
@@ -75,7 +76,7 @@ private:
 	Vec2 acceleration;
 	Vec2 velocity;
 
-
+	Characters *shipp;
 };
 
 

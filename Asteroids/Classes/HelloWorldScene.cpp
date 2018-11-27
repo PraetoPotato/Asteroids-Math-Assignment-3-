@@ -33,10 +33,11 @@
 
 USING_NS_CC;
 
-bool isUp;
-bool isDown;
-bool isLeft;
-bool isRight;
+//bool isUp;
+//bool isDown;
+//bool isLeft;
+//bool isRight;
+//bool isSpace;
 
 Scene* HelloWorld::createScene()
 {
@@ -126,6 +127,7 @@ void HelloWorld::initSprites()
 
 	this->addChild(shipp->getSprite(), 2);
 	
+	
 
 	//addChild-This is basically like the addToSpriteToDrawList in the previous math assignment parameters are the sprite and the layer number
 }
@@ -193,6 +195,21 @@ void HelloWorld::update(float deltaTime)
 		shipp->update(deltaTime);
 		/*ship->setPosition(position);*/
 	}
+
+	if (isSpace == true)
+	{
+		
+		lazer = new Characters(shipp->getPosition(), "Asteroids/Projectiles/lazer.png");
+		lazer->velocity += Vec2(0, 500);
+		Lazers.push_back(lazer);
+		this->addChild(lazer->getSprite(), 1);
+		///*ship->setPosition(position);*/
+	}
+	for (int i = 0;i < Lazers.size();i++)
+	{
+		Lazers[i]->update(deltaTime);
+	}
+	/*lazer->update(deltaTime);*/
 	shipp->update(deltaTime);
 }
 void HelloWorld::keyDownCallback(EventKeyboard::KeyCode keyCode, Event* event)//keydown
@@ -213,13 +230,15 @@ void HelloWorld::keyDownCallback(EventKeyboard::KeyCode keyCode, Event* event)//
 	}
 	else if (keyCode == EventKeyboard::KeyCode::KEY_LEFT_ARROW)
 	{
-		//Vec2 pos(-10,0);
-		//ship->setPosition(ship->getPosition() + (pos));
+
 	}
 	else if (keyCode == EventKeyboard::KeyCode::KEY_RIGHT_ARROW)
 	{
-		//Vec2 pos(10, 0);
-		//ship->setPosition(ship->getPosition() + (pos));
+
+	}
+	else if (keyCode == EventKeyboard::KeyCode::KEY_SPACE)
+	{
+		isSpace = true;
 	}
 }
 
@@ -248,6 +267,11 @@ void HelloWorld::keyUpCallback(EventKeyboard::KeyCode keyCode, Event* event)//ke
 		//Vec2 pos(10, 0);
 		//ship->setPosition(ship->getPosition() + (pos));
 	}
-
+	else if (keyCode == EventKeyboard::KeyCode::KEY_SPACE)
+	{
+		isSpace = false;
+		//Vec2 pos(10, 0);
+		//ship->setPosition(ship->getPosition() + (pos));
+	}
 }
 

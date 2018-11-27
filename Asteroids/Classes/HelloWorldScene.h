@@ -66,17 +66,21 @@ private:
 
 
 	//sprites
-	Sprite* ship;
+
+	
 
 	//Vectors of asteroids N Lazers
+	std::vector<Characters*> Lazers;
 
-	Vec2 speed;
-
-	Vec2 position;
-	Vec2 acceleration;
-	Vec2 velocity;
 
 	Characters *shipp;
+	Characters *lazer;
+	//bool for keyInput
+	bool isUp;
+	bool isDown;
+	bool isLeft;
+	bool isRight;
+	bool isSpace;
 };
 
 

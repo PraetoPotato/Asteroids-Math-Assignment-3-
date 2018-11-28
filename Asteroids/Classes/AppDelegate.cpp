@@ -83,7 +83,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto glview = director->getOpenGLView();
     if(!glview) {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
-		glview = GLViewImpl::createWithRect("Asteroids", cocos2d::Rect(0.0f, 0.0f, 1500.0f, 900.0f), 1.0f, false);//Rect(0, 0, designResolutionSize.width, designResolutionSize.height));
+		glview = GLViewImpl::createWithRect("Asteroids", cocos2d::Rect(0.0f, 0.0f, 2000.0f, 1000.0f), 1.0f, false);//Rect(0, 0, designResolutionSize.width, designResolutionSize.height));
 #else
         glview = GLViewImpl::create("Asteroids");
 #endif

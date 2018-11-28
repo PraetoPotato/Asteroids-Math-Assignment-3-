@@ -12,7 +12,7 @@ Characters::Characters(Vec2 position, std::string texturePath)
 {
 	sprite = Sprite::create(texturePath); //Load the handle
 	sprite->setPosition(position);
-	sprite->setScale(0.25f); //Scale the bird since it loads in quite large 
+	sprite->setScale(0.10f); //Scale the bird since it loads in quite large 
 	sprite->setAnchorPoint(Vec2(0.5, 0.5));//the point which the sprite rotates around
 	auto body = PhysicsBody::createCircle((sprite->getSpriteFrame()->getRectInPixels().size.height) * 0.5f * 0.65f); //Use a circle since the bird is roughly circular
 	//auto body = PhysicsBody::createCircle(32.0f); //Use a circle since the bird is roughly circular
@@ -23,6 +23,7 @@ Characters::Characters(Vec2 position, std::string texturePath)
 
 void Characters::update(float deltaTime)
 {
+	theta = 0;
 	velocity += acceleration * deltaTime;
 	position = sprite->getPosition();
 	position += velocity * deltaTime;

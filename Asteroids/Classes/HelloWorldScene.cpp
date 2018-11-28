@@ -33,11 +33,6 @@
 
 USING_NS_CC;
 
-//bool isUp;
-//bool isDown;
-//bool isLeft;
-//bool isRight;
-//bool isSpace;
 
 Scene* HelloWorld::createScene()
 {

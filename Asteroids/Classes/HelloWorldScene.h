@@ -74,6 +74,7 @@ private:
 
 
 	Characters *shipp;
+	Characters *HUD;
 	Characters *lazer;
 	//bool for keyInput
 	bool isUp;

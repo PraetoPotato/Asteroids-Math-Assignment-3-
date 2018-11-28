@@ -14,6 +14,12 @@ public:
 	Vec2 position;
 	Vec2 acceleration;
 	Vec2 velocity;
+
+
+
+
+
+	float theta;
 	//void kill(float delay = 0.0f);
 protected:
 	Sprite* sprite;

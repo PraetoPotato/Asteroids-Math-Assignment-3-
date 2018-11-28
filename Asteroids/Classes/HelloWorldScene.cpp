@@ -29,6 +29,9 @@
 #include <iostream>
 
 
+//float theta;
+
+
   
 
 USING_NS_CC;
@@ -126,7 +129,34 @@ void HelloWorld::initSprites()
 	shipp= new Characters({ 100,100 }, "Asteroids/Ship/Space_Ship.png");
 
 	this->addChild(shipp->getSprite(), 2);
-	
+
+
+
+	HUD= new Characters({ 20,275 }, "Asteroids/HUD/hud.png");
+
+
+	this->addChild(HUD->getSprite(), 2);
+
+	HUD = new Characters({ 50,275 }, "Asteroids/HUD/life.png");
+
+
+	this->addChild(HUD->getSprite(), 2);
+
+	HUD = new Characters({ 75,275 }, "Asteroids/HUD/life.png");
+
+
+	this->addChild(HUD->getSprite(), 2);
+
+	HUD = new Characters({ 100,275 }, "Asteroids/HUD/life.png");
+
+
+	this->addChild(HUD->getSprite(), 2);
+
+
+	HUD = new Characters({ 200,275 }, "Asteroids/HUD/score.png");
+
+
+	this->addChild(HUD->getSprite(), 2);
 	
 
 	//addChild-This is basically like the addToSpriteToDrawList in the previous math assignment parameters are the sprite and the layer number
@@ -211,6 +241,25 @@ void HelloWorld::update(float deltaTime)
 	}
 	/*lazer->update(deltaTime);*/
 	shipp->update(deltaTime);
+
+	if (isLeft == true)
+	{
+		shipp->theta += 250 * deltaTime;
+		//shipp->velocity += Vec2(-2, 0);
+		shipp->update(deltaTime);
+		//ship->setPosition(position);
+		//testSprite->theta += 250 * dt;
+	}
+
+	if (isRight == true)
+	{
+		shipp->velocity += Vec2(1, 0);
+		shipp->update(deltaTime);
+		/*ship->setPosition(position);*/
+	}
+
+
+
 }
 void HelloWorld::keyDownCallback(EventKeyboard::KeyCode keyCode, Event* event)//keydown
 {
@@ -230,11 +279,11 @@ void HelloWorld::keyDownCallback(EventKeyboard::KeyCode keyCode, Event* event)//
 	}
 	else if (keyCode == EventKeyboard::KeyCode::KEY_LEFT_ARROW)
 	{
-
+		isLeft = true;
 	}
 	else if (keyCode == EventKeyboard::KeyCode::KEY_RIGHT_ARROW)
 	{
-
+		isRight = true;
 	}
 	else if (keyCode == EventKeyboard::KeyCode::KEY_SPACE)
 	{
@@ -258,14 +307,18 @@ void HelloWorld::keyUpCallback(EventKeyboard::KeyCode keyCode, Event* event)//ke
 
 	}
 	else if (keyCode == EventKeyboard::KeyCode::KEY_LEFT_ARROW)
+
 	{
 		//Vec2 pos(-10,0);
 		//ship->setPosition(ship->getPosition() + (pos));
+
+		isLeft = false;
 	}
 	else if (keyCode == EventKeyboard::KeyCode::KEY_RIGHT_ARROW)
 	{
 		//Vec2 pos(10, 0);
 		//ship->setPosition(ship->getPosition() + (pos));
+		isRight = true;
 	}
 	else if (keyCode == EventKeyboard::KeyCode::KEY_SPACE)
 	{

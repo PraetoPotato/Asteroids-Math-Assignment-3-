@@ -152,7 +152,22 @@ void HelloWorld::initSprites()
 
 
 	this->addChild(HUD->getSprite(), 2);
+
 	
+	ast = new Characters({ 200,100 }, "Asteroids/ast/ast.png");
+
+
+	this->addChild(ast->getSprite(), 2);
+
+	planet = new Characters({ 300,200 }, "Asteroids/onscreen/planet.png");
+
+
+	this->addChild(planet->getSprite(), 2);
+
+	planet = new Characters({ 400,200 }, "Asteroids/onscreen/bh.png");
+
+
+	this->addChild(planet->getSprite(), 2);
 
 	//addChild-This is basically like the addToSpriteToDrawList in the previous math assignment parameters are the sprite and the layer number
 }

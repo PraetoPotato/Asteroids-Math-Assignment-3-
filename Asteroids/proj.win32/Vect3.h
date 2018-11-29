@@ -7,6 +7,12 @@ public:
 	~Vect3();//deconstructor
 
 	//operator overloading
+	const float & operator[](const int index) const;
+
+	Vect3 operator+(const Vect3 &vec) const;
+	Vect3 operator-(const Vect3 &vec) const;
+
 private:
 	float x, y,z;
+	
 };

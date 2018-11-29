@@ -30,6 +30,12 @@
     <ClCompile Include="SpaceShip.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="matrix.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="Vect3.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -56,7 +62,10 @@
     <ClInclude Include="Characters.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="Vect2.h">
+    <ClInclude Include="Vect3.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="matrix.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

@@ -210,14 +210,14 @@ void HelloWorld::update(float deltaTime)
 	if (isUp == true)
 	{
 		shipp->velocity += Vec2(0, 1);
-		shipp->update(deltaTime);
+		
 		//ship->setPosition(position);
 	}
 
 	if (isDown == true)
 	{
 		shipp->velocity += Vec2(0, -1);
-		shipp->update(deltaTime);
+		
 		/*ship->setPosition(position);*/
 	}
 
@@ -235,25 +235,28 @@ void HelloWorld::update(float deltaTime)
 		Lazers[i]->update(deltaTime);
 	}
 	/*lazer->update(deltaTime);*/
-	shipp->update(deltaTime);
+	
 
 	if (isLeft == true)
 	{
-		shipp->theta += 250 * deltaTime;
+		shipp->theta -= 1 * deltaTime;
+		shipp->getSprite()->setRotation((shipp->getSprite()->getRotation()) + shipp->theta);
 		//shipp->velocity += Vec2(-2, 0);
-		shipp->update(deltaTime);
+		
+		
 		//ship->setPosition(position);
 		//testSprite->theta += 250 * dt;
 	}
 
 	if (isRight == true)
 	{
-		shipp->velocity += Vec2(1, 0);
-		shipp->update(deltaTime);
+		/*shipp->velocity += Vec2(1, 0);*/
+		shipp->theta += 1 * deltaTime;
+		shipp->getSprite()->setRotation((shipp->getSprite()->getRotation())+shipp->theta);
 		/*ship->setPosition(position);*/
 	}
 
-
+	shipp->update(deltaTime);
 
 }
 void HelloWorld::keyDownCallback(EventKeyboard::KeyCode keyCode, Event* event)//keydown
@@ -313,7 +316,7 @@ void HelloWorld::keyUpCallback(EventKeyboard::KeyCode keyCode, Event* event)//ke
 	{
 		//Vec2 pos(10, 0);
 		//ship->setPosition(ship->getPosition() + (pos));
-		isRight = true;
+		isRight = false;
 	}
 	else if (keyCode == EventKeyboard::KeyCode::KEY_SPACE)
 	{

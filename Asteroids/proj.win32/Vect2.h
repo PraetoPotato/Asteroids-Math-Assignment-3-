@@ -1,12 +1,12 @@
 #pragma once
-class Vect2
+class Vect3
 {
 public:
-	Vect2();//constructor
-	Vect2(float X, float Y) :x(X), y(Y) {} //constructor that initializes x and y
-	~Vect2();//deconstructor
+	Vect3();//constructor
+	Vect3(float X, float Y, float Z) :x(X), y(Y), z(Z) {} //constructor that initializes x and y
+	~Vect3();//deconstructor
 
 	//operator overloading
 private:
-	float x, y;
+	float x, y,z;
 };

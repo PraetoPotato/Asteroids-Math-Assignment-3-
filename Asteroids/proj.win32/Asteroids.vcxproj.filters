@@ -33,7 +33,10 @@
     <ClCompile Include="matrix.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="Vect3.cpp">
+    <ClCompile Include="Vect4.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectiles.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -62,10 +65,16 @@
     <ClInclude Include="Characters.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="Vect3.h">
+    <ClInclude Include="matrix.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="matrix.h">
+    <ClInclude Include="Vect4.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectiles.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="Asteroids.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

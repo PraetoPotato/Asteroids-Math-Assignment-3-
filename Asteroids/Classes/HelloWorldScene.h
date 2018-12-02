@@ -28,7 +28,9 @@
 #include "cocos2d.h"
 #include "proj.win32/inputHandler.h"
 #include "proj.win32/Characters.h"
-
+#include "proj.win32/SpaceShip.h"
+#include "proj.win32/Projectiles.h"
+#include "proj.win32/Asteroids.h"
 
 
 
@@ -74,7 +76,8 @@ private:
 	std::vector<Characters*> Ast;
 
 
-	Characters *shipp;
+	
+	SpaceShip*shipp;
 	Characters *HUD;
 	Characters *lazer;
 	Characters *planet;

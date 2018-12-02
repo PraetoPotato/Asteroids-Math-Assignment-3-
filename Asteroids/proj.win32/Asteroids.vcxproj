@@ -155,16 +155,19 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="inputHandler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="matrix.cpp" />
+    <ClCompile Include="Projectiles.cpp" />
     <ClCompile Include="SpaceShip.cpp" />
-    <ClCompile Include="Vect3.cpp" />
+    <ClCompile Include="Vect4.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="Ast.h" />
+    <ClInclude Include="Asteroids.h" />
     <ClInclude Include="Characters.h" />
+    <ClInclude Include="Projectiles.h" />
     <ClInclude Include="matrix.h" />
-    <ClInclude Include="Vect3.h" />
+    <ClInclude Include="Vect4.h" />
     <ClInclude Include="inputHandler.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="SpaceShip.h" />

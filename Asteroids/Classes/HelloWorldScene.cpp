@@ -25,7 +25,6 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
 #include "proj.win32/Characters.h"
-#include "proj.win32/SpaceShip.h"
 #include <iostream>
 
 
@@ -121,7 +120,7 @@ bool HelloWorld::init()
 }
 void HelloWorld::initSprites()
 {
-	shipp= new Characters({ 100,100 }, "Asteroids/Ship/Space_Ship.png");
+	shipp= new SpaceShip({ 100,100 }, "Asteroids/Ship/Space_Ship.png");
 
 	this->addChild(shipp->getSprite(), 2);
 

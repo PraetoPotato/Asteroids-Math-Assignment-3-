@@ -1,6 +1,6 @@
 #include "matrix.h"
 
-mat4::mat4()//
+mat4::mat4()//identity matrix
 {
 	col[0][0] = 1.0f;
 	col[0][1] = 0.0;
@@ -118,5 +118,101 @@ mat4 mat4::getTranspose() const
 	temp[1][3] = col[3][1];
 	temp[2][3] = col[3][2];
 	temp[3][3] = col[3][3];
+	return mat4();
+}
+
+mat4 mat4::Rotate(float theta)
+{
+	col[0][0] = 1.0f;
+	col[0][1] = 0.0;
+	col[0][2] = 0.0;
+	col[0][3] = 0.0;
+
+	col[1][0] = 0.0;
+	col[1][1] = 1.0f;
+	col[1][2] = 0.0;
+	col[1][3] = 0.0;
+
+	col[2][0] = 0.0;
+	col[2][1] = 0.0;
+	col[2][2] = 1.0f;
+	col[2][3] = 0.0;
+
+	col[3][0] = 0.0;
+	col[3][1] = 0.0;
+	col[3][2] = 0.0;
+	col[3][3] = 1.0f;
+	return mat4();
+}
+
+mat4 mat4::RotateX(float theta)
+{
+	col[0][0] = 1.0f;
+	col[0][1] = 0.0;
+	col[0][2] = 0.0;
+	col[0][3] = 0.0;
+
+	col[1][0] = 0.0;
+	col[1][1] = 1.0f;
+	col[1][2] = 0.0;
+	col[1][3] = 0.0;
+
+	col[2][0] = 0.0;
+	col[2][1] = 0.0;
+	col[2][2] = 1.0f;
+	col[2][3] = 0.0;
+
+	col[3][0] = 0.0;
+	col[3][1] = 0.0;
+	col[3][2] = 0.0;
+	col[3][3] = 1.0f;
+	return mat4();
+}
+
+mat4 mat4::RotateY(float theta)
+{
+	col[0][0] = 1.0f;
+	col[0][1] = 0.0;
+	col[0][2] = 0.0;
+	col[0][3] = 0.0;
+
+	col[1][0] = 0.0;
+	col[1][1] = 1.0f;
+	col[1][2] = 0.0;
+	col[1][3] = 0.0;
+
+	col[2][0] = 0.0;
+	col[2][1] = 0.0;
+	col[2][2] = 1.0f;
+	col[2][3] = 0.0;
+
+	col[3][0] = 0.0;
+	col[3][1] = 0.0;
+	col[3][2] = 0.0;
+	col[3][3] = 1.0f;
+	return mat4();
+}
+
+mat4 mat4::RotateZ(float theta)
+{
+	col[0][0] = 1.0f;
+	col[0][1] = 0.0;
+	col[0][2] = 0.0;
+	col[0][3] = 0.0;
+
+	col[1][0] = 0.0;
+	col[1][1] = 1.0f;
+	col[1][2] = 0.0;
+	col[1][3] = 0.0;
+
+	col[2][0] = 0.0;
+	col[2][1] = 0.0;
+	col[2][2] = 1.0f;
+	col[2][3] = 0.0;
+
+	col[3][0] = 0.0;
+	col[3][1] = 0.0;
+	col[3][2] = 0.0;
+	col[3][3] = 1.0f;
 	return mat4();
 }

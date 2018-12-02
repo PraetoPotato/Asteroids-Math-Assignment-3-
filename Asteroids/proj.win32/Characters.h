@@ -29,8 +29,9 @@ public:
 protected: //we're using protected so that spaceship, projectiles, and asteroid can still access of the objects from character
 	Sprite* sprite;
 	mat4 rotation;
-	float maxVelocity = 10.0f;
-	float maxAcceleration = 10.0f;
+	float maxVelocity = 100.0f;
+	float maxAcceleration = 1000.0f;
+	float rotationSpeed = 100.0f;
 private:
 
 };

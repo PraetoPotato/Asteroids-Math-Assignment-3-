@@ -32,6 +32,14 @@ void Characters::update(float deltaTime)
 	velocity += acceleration * deltaTime;
 	position = sprite->getPosition();//in stephen's vid it's vec2 position= *(vec2*)&GetPosition();
 	position += velocity * deltaTime;
+	if (acceleration.getLengthSq() > maxAcceleration*maxAcceleration)
+	{
+		acceleration = acceleration.getNormalized()*maxAcceleration;//clamp the acceleration if it gets to max acceleration
+	}
+	if (velocity.getLengthSq() > maxVelocity*maxVelocity)
+	{
+		velocity = velocity.getNormalized()*maxVelocity;//clamp the acceleration if it gets to max acceleration
+	}
 	//recomputeCorners of sprite
 	sprite->setPosition(position);
 	acceleration = Vec2(0.0f,0.0f);//set acceleration to 0 so that force doesn't getting applied for the rest of the program// vec2(0.0f)

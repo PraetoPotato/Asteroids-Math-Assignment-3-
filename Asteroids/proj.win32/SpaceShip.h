@@ -12,6 +12,7 @@ public:
 
 	int shield = 4;
 	int lives = 3;
+	float speedMultiplier = 100.0f;//determines how fast the ship is moving 
 private:
 	
 };

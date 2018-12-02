@@ -23,10 +23,10 @@ public:
 	mat4 operator*(const mat4&m) const;
 
 	mat4 getTranspose() const;
-	mat4 Rotate();
-	mat4 RotateX();
-	mat4 RotateY();
-	mat4 RotateZ();
+	mat4 Rotate(float theta);
+	mat4 RotateX(float theta);
+	mat4 RotateY(float theta);
+	mat4 RotateZ(float theta);
 };
 
 

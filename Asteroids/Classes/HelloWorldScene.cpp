@@ -221,6 +221,8 @@ void HelloWorld::update(float deltaTime)
 	//position += velocity * deltaTime;
 	//ship->setPosition(position);
 
+	ast->velocity += Vec2(-0.01, 0.01);
+
 	if (isUp == true)
 	{
 		shipp->velocity += Vec2(0, 1);
@@ -271,7 +273,7 @@ void HelloWorld::update(float deltaTime)
 	}
 
 	shipp->update(deltaTime);
-
+	ast->update(deltaTime);
 }
 void HelloWorld::keyDownCallback(EventKeyboard::KeyCode keyCode, Event* event)//keydown
 {

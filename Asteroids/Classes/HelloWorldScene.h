@@ -74,7 +74,7 @@ private:
 	//Vectors of asteroids N Lazers
 	std::vector<Characters*> Lazers;
 	std::vector<Characters*> Ast;
-
+	std::vector<Characters*> Enemy;
 
 	
 	SpaceShip*shipp;
@@ -82,6 +82,9 @@ private:
 	Characters *lazer;
 	Characters *planet;
 	Characters *ast;
+	Characters *enemy;
+	Characters *powerups;
+
 	//bool for keyInput
 	bool isUp;
 	bool isDown;

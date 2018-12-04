@@ -13,4 +13,8 @@ public:
 	vec4 operator+(const vec4 &vec) const;
 	vec4 operator-(const vec4 &vec) const;
 
+	vec4 operator=(const vec4 & vec) const;
+
+	vec4 operator+=(const vec4 & vec) const;
+
 };

@@ -24,7 +24,7 @@ public:
 	Vec2 position;
 	Vec2 acceleration;
 	Vec2 velocity;
-	float theta=0.0f;//gets the rotation(no duh)//Stephen put this in the protected 
+	float theta/*=0.0f*/;//gets the rotation(no duh)//Stephen put this in the protected 
 	
 protected: //we're using protected so that spaceship, projectiles, and asteroid can still access of the objects from character
 	Sprite* sprite;

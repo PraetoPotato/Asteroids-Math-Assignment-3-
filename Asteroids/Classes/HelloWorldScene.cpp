@@ -223,14 +223,15 @@ void HelloWorld::update(float deltaTime)
 
 	if (isUp == true)
 	{
-		shipp->velocity += Vec2(0, 1);
+		shipp->velocity += Vec2(0,100)*deltaTime;
+		
 		
 		//ship->setPosition(position);
 	}
 
 	if (isDown == true)
 	{
-		shipp->velocity += Vec2(0, -1);
+		shipp->velocity += Vec2(0,-100)*deltaTime;
 		
 		/*ship->setPosition(position);*/
 	}

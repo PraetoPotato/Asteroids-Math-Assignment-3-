@@ -28,3 +28,13 @@ vec4 vec4::operator-(const vec4 & vec) const
 	return vec4(x - vec.x, y - vec.y, z - vec.z, w - vec.w);
 }
 
+vec4 vec4::operator=(const vec4 & vec) const
+{
+	*this = *this;
+	return *this;
+}
+vec4 vec4::operator+=(const vec4 & vec) const
+{
+	*this = *this + vec;
+	return *this;
+}

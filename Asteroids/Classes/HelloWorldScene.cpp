@@ -158,6 +158,14 @@ void HelloWorld::initSprites()
 
 	this->addChild(ast->getSprite(), 2);
 
+	ast = new Characters({ 200,130}, "Asteroids/ast/ast.png");
+
+
+	this->addChild(ast->getSprite(), 2);
+
+
+
+
 	planet = new Characters({ 300,200 }, "Asteroids/onscreen/planet.png");
 
 
@@ -167,6 +175,18 @@ void HelloWorld::initSprites()
 
 
 	this->addChild(planet->getSprite(), 2);
+
+	enemy = new Characters({ 400,150 }, "Asteroids/enemy ship/enemy1.png");
+
+
+	this->addChild(enemy->getSprite(), 2);
+
+	
+
+	enemy = new Characters({ 400,130 }, "Asteroids/enemy ship/enemy2.png");
+
+
+	this->addChild(enemy->getSprite(), 2);
 
 	//addChild-This is basically like the addToSpriteToDrawList in the previous math assignment parameters are the sprite and the layer number
 }
@@ -221,6 +241,9 @@ void HelloWorld::update(float deltaTime)
 	//position += velocity * deltaTime;
 	//ship->setPosition(position);
 
+	ast->velocity += Vec2(-0.01, 0.01);
+	
+
 	if (isUp == true)
 	{
 		shipp->velocity += Vec2(0,100)*deltaTime;
@@ -272,7 +295,8 @@ void HelloWorld::update(float deltaTime)
 	}
 
 	shipp->update(deltaTime);
-
+	ast->update(deltaTime);
+	ast->update(deltaTime);
 }
 void HelloWorld::keyDownCallback(EventKeyboard::KeyCode keyCode, Event* event)//keydown
 {

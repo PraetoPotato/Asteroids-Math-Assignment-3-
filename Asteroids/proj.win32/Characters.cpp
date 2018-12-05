@@ -28,7 +28,15 @@ void Characters::load(Vec2 position, std::string spritePath)
 
 void Characters::update(float deltaTime)
 {
+	/*rotation = mat4::identity.RotateZ(theta);*/ //get identity matrix and rotate it by the z axis by theta
+	/*
 	
+	*/
+	mat4 identity;
+	/*rotation = identity.getIdentity();*/
+	identity.getIdentity().RotateZ(theta);
+	sprite->setAdditionalTransform((Mat4*)(&rotation));
+
 	velocity += acceleration * deltaTime;
 	position = sprite->getPosition();//in stephen's vid it's vec2 position= *(vec2*)&GetPosition();
 	position += velocity * deltaTime;
@@ -40,7 +48,7 @@ void Characters::update(float deltaTime)
 	{
 		velocity = velocity.getNormalized()*maxVelocity;//clamp the acceleration if it gets to max acceleration
 	}
-	//recomputeCorners of sprite
+
 	sprite->setPosition(position);
 	acceleration = Vec2(0.0f,0.0f);//set acceleration to 0 so that force doesn't getting applied for the rest of the program// vec2(0.0f)
 	

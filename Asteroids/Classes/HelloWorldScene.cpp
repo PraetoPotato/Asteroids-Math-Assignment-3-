@@ -246,7 +246,8 @@ void HelloWorld::update(float deltaTime)
 
 	if (isUp == true)
 	{
-		shipp->velocity += Vec2(0,100)*deltaTime;
+		/*vec4 force = shipp->rotation * vec4(0.0f, 2.0f, 0.0f, 0.0f)*/;
+		shipp->addForce(Vec2(0.0f,100.0f));
 		
 		
 		//ship->setPosition(position);
@@ -254,7 +255,7 @@ void HelloWorld::update(float deltaTime)
 
 	if (isDown == true)
 	{
-		shipp->velocity += Vec2(0,-100)*deltaTime;
+		shipp->addForce(Vec2(0, -100.0f));
 		
 		/*ship->setPosition(position);*/
 	}
@@ -300,8 +301,35 @@ void HelloWorld::update(float deltaTime)
 }
 void HelloWorld::keyDownCallback(EventKeyboard::KeyCode keyCode, Event* event)//keydown
 {
+	if (keyCode == EventKeyboard::KeyCode::KEY_W)
+	{
+		/*Vec2 pos(0, 10);*/
+		isUp = true;
+
+
+	}
+	else if (keyCode == EventKeyboard::KeyCode::KEY_S)
+	{
+		/*Vec2 pos(0, -10);*/
+		isDown = true;
+
+	}
+	else if (keyCode == EventKeyboard::KeyCode::KEY_A)
+
+	{
+		//Vec2 pos(-10,0);
+		//ship->setPosition(ship->getPosition() + (pos));
+
+		isLeft = true;
+	}
+	else if (keyCode == EventKeyboard::KeyCode::KEY_D)
+	{
+		//Vec2 pos(10, 0);
+		//ship->setPosition(ship->getPosition() + (pos));
+		isRight = true;
+	}
 	//float dt = updateTimer->getElapsedTimeSeconds();
-	if (keyCode == EventKeyboard::KeyCode::KEY_UP_ARROW)
+	else if (keyCode == EventKeyboard::KeyCode::KEY_UP_ARROW)
 	{
 		/*Vec2 pos(0, 10);*/
 		isUp = true;
@@ -330,7 +358,34 @@ void HelloWorld::keyDownCallback(EventKeyboard::KeyCode keyCode, Event* event)//
 
 void HelloWorld::keyUpCallback(EventKeyboard::KeyCode keyCode, Event* event)//key up(releasing key)
 {
-	if (keyCode == EventKeyboard::KeyCode::KEY_UP_ARROW)
+	if (keyCode == EventKeyboard::KeyCode::KEY_W)
+	{
+		/*Vec2 pos(0, 10);*/
+		isUp = false;
+
+
+	}
+	else if (keyCode == EventKeyboard::KeyCode::KEY_S)
+	{
+		/*Vec2 pos(0, -10);*/
+		isDown = false;
+
+	}
+	else if (keyCode == EventKeyboard::KeyCode::KEY_A)
+
+	{
+		//Vec2 pos(-10,0);
+		//ship->setPosition(ship->getPosition() + (pos));
+
+		isLeft = false;
+	}
+	else if (keyCode == EventKeyboard::KeyCode::KEY_D)
+	{
+		//Vec2 pos(10, 0);
+		//ship->setPosition(ship->getPosition() + (pos));
+		isRight = false;
+	}
+	else if (keyCode == EventKeyboard::KeyCode::KEY_UP_ARROW)
 	{
 		/*Vec2 pos(0, 10);*/
 		isUp = false;

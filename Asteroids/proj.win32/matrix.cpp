@@ -24,9 +24,6 @@ mat4::mat4()//identity matrix
 
 }
 
-void mat4::Identity() {
-	*this = *identity;
-}
 
 mat4::mat4(const vec4 right, const vec4 up, const vec4 dir, const vec4 pos)
 {
@@ -79,7 +76,7 @@ mat4 mat4::operator+(const mat4 & m) const
 		col[3] + m[3]);
 }
 
-mat4 mat4::operator*(const mat4 & m) const
+mat4 mat4::operator*(const mat4 & m) const//m is matrix
 {
 	return mat4(
 		col[0][0] * m[0][0] + col[1][0] * m[0][1] + col[2][0] * m[0][2] + col[3][0] * m[0][3],
@@ -125,5 +122,40 @@ mat4 mat4::getTranspose() const
 	temp[3][3] = col[3][3];
 	return mat4();
 }
+mat4 mat4::getIdentity() const
+{
+	return mat4();
+}
 
+void mat4::RotateZ(float theta)
+{
+	float radians = theta/(M_PI/180);
+	float cosValue = cosf(radians);
+	float sinValue = sinf(radians);
+	
+		/*
+		rotation matrix * position matrix= position matrix prime
 
+		s=sin(theta)
+		c=cos(theta)
+
+		|c -s 0 0| |x|
+		|s  c 0 0|*|y| = the ANSWER TO ALL OUR GOD DAMN QUESTIONS
+		|0  0 1 0| |z|
+		|0  0 0 1| |w|
+
+		*/
+	*this = mat4(
+		cosValue,-sinValue, 0.0f,0.0f,
+		sinValue, cosValue, 0.0f, 0.0f,
+		0.0f,     0.0f,     1.0f, 0.0f,
+		0.0f,     0.0f,     0.0f, 1.0f)*(*this);
+		
+
+	
+}
+
+//inline mat4 operator*(const vec4 &vec4, const mat4 &mat)
+//{
+//	return mat * vec4;
+//}

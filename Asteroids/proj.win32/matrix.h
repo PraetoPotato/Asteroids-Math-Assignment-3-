@@ -6,6 +6,7 @@ public:
 	vec4 col[4];
 
 	mat4();
+	void Identity();
 	mat4(const vec4 right, const vec4 up, const vec4 dir, const vec4 pos);
 	mat4(float f1, float f2,
 		float f3, float f4,
@@ -27,8 +28,10 @@ public:
 	mat4 RotateX(float theta);
 	mat4 RotateY(float theta);
 	mat4 RotateZ(float theta);
-	
+
+	mat4 *identity;
 };
+ //extern declares the existence of global variables in a header, so that each source file that includes the header knows about it
 
 
 inline std::ostream& operator<<(std::ostream& os, const mat4& m) {

@@ -24,6 +24,10 @@ mat4::mat4()//identity matrix
 
 }
 
+void mat4::Identity() {
+	*this = *identity;
+}
+
 mat4::mat4(const vec4 right, const vec4 up, const vec4 dir, const vec4 pos)
 {
 	col[0] = right;
@@ -122,98 +126,4 @@ mat4 mat4::getTranspose() const
 	return mat4();
 }
 
-mat4 mat4::Rotate(float theta)
-{
-	col[0][0] = 1.0f;
-	col[0][1] = 0.0;
-	col[0][2] = 0.0;
-	col[0][3] = 0.0;
 
-	col[1][0] = 0.0;
-	col[1][1] = 1.0f;
-	col[1][2] = 0.0;
-	col[1][3] = 0.0;
-
-	col[2][0] = 0.0;
-	col[2][1] = 0.0;
-	col[2][2] = 1.0f;
-	col[2][3] = 0.0;
-
-	col[3][0] = 0.0;
-	col[3][1] = 0.0;
-	col[3][2] = 0.0;
-	col[3][3] = 1.0f;
-	return mat4();
-}
-
-mat4 mat4::RotateX(float theta)
-{
-	col[0][0] = 1.0f;
-	col[0][1] = 0.0;
-	col[0][2] = 0.0;
-	col[0][3] = 0.0;
-
-	col[1][0] = 0.0;
-	col[1][1] = cosf(theta);
-	col[1][2] = -sinf(theta);
-	col[1][3] = 0.0;
-
-	col[2][0] = 0.0;
-	col[2][1] = sinf(theta);
-	col[2][2] = cosf(theta);
-	col[2][3] = 0.0;
-
-	col[3][0] = 0.0;
-	col[3][1] = 0.0;
-	col[3][2] = 0.0;
-	col[3][3] = 1.0f;
-	return mat4();
-}
-
-mat4 mat4::RotateY(float theta)
-{
-	col[0][0] = cosf(theta);
-	col[0][1] = 0.0;
-	col[0][2] = -sinf(theta);
-	col[0][3] = 0.0;
-
-	col[1][0] = 0.0;
-	col[1][1] = 1.0f;
-	col[1][2] = 0.0;
-	col[1][3] = 0.0;
-
-	col[2][0] = sinf(theta);
-	col[2][1] = 0.0;
-	col[2][2] = 1.0f;
-	col[2][3] = cosf(theta);
-
-	col[3][0] = 0.0;
-	col[3][1] = 0.0;
-	col[3][2] = 0.0;
-	col[3][3] = 1.0f;
-	return mat4();
-}
-
-mat4 mat4::RotateZ(float theta)
-{
-	col[0][0] = cosf(theta);
-	col[0][1] = -sinf(theta);
-	col[0][2] = 0.0;
-	col[0][3] = 0.0;
-
-	col[1][0] = sinf(theta);
-	col[1][1] = cosf(theta);
-	col[1][2] = 0.0;
-	col[1][3] = 0.0;
-
-	col[2][0] = 0.0;
-	col[2][1] = 0.0;
-	col[2][2] = 1.0f;
-	col[2][3] = 0.0;
-
-	col[3][0] = 0.0;
-	col[3][1] = 0.0;
-	col[3][2] = 0.0;
-	col[3][3] = 1.0f;
-	return mat4();
-}

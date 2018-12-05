@@ -8,3 +8,8 @@ SpaceShip::SpaceShip(Vec2 position, std::string spritePath)
 	//sprite->getPhysicsBody()->setTag(tags::ship);
 
 }
+
+void SpaceShip::addforce(Vec2 force)//change Vec2 into vec2
+{
+	acceleration += force;
+}

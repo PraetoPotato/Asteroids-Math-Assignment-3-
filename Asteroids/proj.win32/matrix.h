@@ -22,6 +22,8 @@ public:
 	mat4 operator+(const mat4&m) const;
 	mat4 operator*(const mat4&m) const;
 
+	mat4 operator=(const mat4&m) ;
+
 	friend mat4 operator*(const vec4 &vec4, const mat4 &mat);
 	mat4 getTranspose() const;
 	mat4 getIdentity() const;

@@ -26,6 +26,7 @@
 #include "SimpleAudioEngine.h"
 #include "proj.win32/Characters.h"
 #include <iostream>
+#include <time.h>
 
 
 //float theta;
@@ -152,16 +153,30 @@ void HelloWorld::initSprites()
 
 	this->addChild(HUD->getSprite(), 2);
 
+	srand(time(NULL));
+	for (int i = 0;i < 20;i++)
+	{
+		ast = new Characters({(float) ((rand() %500 + 10)),(float)((rand() % 500 + 10)) }, "Asteroids/ast/ast.png");
+		Ast.push_back(ast);
+		this->addChild(ast->getSprite(), 2);
+	}
+
+	for (int i = 0;i < 5;i++)
+	{
+		powerOrb = new Characters({ (float)((rand() % 500 + 10)),(float)((rand() % 250 + 10)) }, "Asteroids/Power Orbs/PowerOrb.png");
+		PowerOrbs.push_back(powerOrb);
+		this->addChild(powerOrb->getSprite(), 2);
+	}
 	
-	ast = new Characters({ 200,100 }, "Asteroids/ast/ast.png");
+	//ast = new Characters({ 200,100 }, "Asteroids/ast/ast.png");
 
 
-	this->addChild(ast->getSprite(), 2);
+	//this->addChild(ast->getSprite(), 2);
 
-	ast = new Characters({ 200,130}, "Asteroids/ast/ast.png");
+	//ast = new Characters({ 200,130}, "Asteroids/ast/ast.png");
 
 
-	this->addChild(ast->getSprite(), 2);
+	//this->addChild(ast->getSprite(), 2);
 
 
 
@@ -182,11 +197,14 @@ void HelloWorld::initSprites()
 	this->addChild(enemy->getSprite(), 2);
 
 	
-
 	enemy = new Characters({ 400,130 }, "Asteroids/enemy ship/enemy2.png");
 
 
 	this->addChild(enemy->getSprite(), 2);
+
+	finalboss=new Hogue({ 250,100 }, "Asteroids/Final Boss/Hogue.png");
+
+	this->addChild(finalboss->getSprite(),2);
 
 	//addChild-This is basically like the addToSpriteToDrawList in the previous math assignment parameters are the sprite and the layer number
 }
@@ -240,14 +258,13 @@ void HelloWorld::update(float deltaTime)
 	//position = ship->getPosition();
 	//position += velocity * deltaTime;
 	//ship->setPosition(position);
-
-	ast->velocity += Vec2(-0.01, 0.01);
 	
 
 	if (isUp == true)
 	{
 		/*vec4 force = shipp->rotation * vec4(0.0f, 2.0f, 0.0f, 0.0f)*/;
-		shipp->addForce(Vec2(0.0f,100.0f));
+		Vec3 force = shipp->rotation*(Vec3(0.0f, 100.0f, 0.0f));
+		shipp->addForce(Vec2(force.x,force.y));
 		
 		
 		//ship->setPosition(position);
@@ -255,16 +272,17 @@ void HelloWorld::update(float deltaTime)
 
 	if (isDown == true)
 	{
-		shipp->addForce(Vec2(0, -100.0f));
+		Vec3 force = shipp->rotation*(Vec3(0.0f, -100.0f, 0.0f));
+		shipp->addForce(Vec2(force.x, force.y));
 		
 		/*ship->setPosition(position);*/
 	}
 
 	if (isSpace == true)
 	{
-		
+		Vec3 force = shipp->rotation*(Vec3(0.0f, 200.0f, 0.0f));
 		lazer = new Characters(shipp->getPosition(), "Asteroids/Projectiles/lazer.png");
-		lazer->velocity += Vec2(0, 500);
+		lazer->velocity += Vec2(force.x, force.y);
 		Lazers.push_back(lazer);
 		this->addChild(lazer->getSprite(), 1);
 		///*ship->setPosition(position);*/
@@ -272,32 +290,50 @@ void HelloWorld::update(float deltaTime)
 	for (int i = 0;i < Lazers.size();i++)
 	{
 		Lazers[i]->update(deltaTime);
+		for (int j = 0;j<Ast.size();j++)
+		{
+			if ((lazer->getPosition()- ast->getPosition()).getLength()< (lazer->radius+ast->radius))
+			{
+			for(int k=0;k<)
+				//use getChildren();
+				/*this->removeChild(Lazers[i]->getSprite());
+				Lazers.erase(Lazers.begin() + i);
+				i--;*/
+			}
+		}
 	}
 	/*lazer->update(deltaTime);*/
 	
 
 	if (isLeft == true)
 	{
-		shipp->theta -= 1 * deltaTime;
-		shipp->getSprite()->setRotation((shipp->getSprite()->getRotation()) + shipp->theta);
-		//shipp->velocity += Vec2(-2, 0);
+
+		shipp->theta -= shipp->rotationSpeed*deltaTime;
+
+		/*shipp->addForce(Vec2(-100.0f,0.0f));*/
+		/*shipp->getSprite()->setRotation((shipp->getSprite()->getRotation()) + shipp->theta);*/
 		
-		
-		//ship->setPosition(position);
-		//testSprite->theta += 250 * dt;
 	}
 
 	if (isRight == true)
 	{
-		/*shipp->velocity += Vec2(1, 0);*/
-		shipp->theta += 1 * deltaTime;
-		shipp->getSprite()->setRotation((shipp->getSprite()->getRotation())+shipp->theta);
-		/*ship->setPosition(position);*/
+		shipp->theta += shipp->rotationSpeed*deltaTime;
+	/*shipp->addForce(Vec2(100.0f, 0.0f));*/
+
 	}
 
+	/*shipp->getSprite()->setAdditionalTransform(Mat4*)(shipp->rotationSpeed);*/
 	shipp->update(deltaTime);
-	ast->update(deltaTime);
-	ast->update(deltaTime);
+
+	for (int i = 0;i < Ast.size();i++)
+	{
+		Ast[i]->velocity = Vec2((float)(rand()%10+1), (float)(rand()% 10 + 1));
+		Ast[i]->update(deltaTime);
+		
+	}
+	//shipp->getSprite()->setAdditionalTransform((Mat4*)(/*insert mat4 transformation here*/));
+	/*ast->update(deltaTime);
+	ast->update(deltaTime);*/
 }
 void HelloWorld::keyDownCallback(EventKeyboard::KeyCode keyCode, Event* event)//keydown
 {

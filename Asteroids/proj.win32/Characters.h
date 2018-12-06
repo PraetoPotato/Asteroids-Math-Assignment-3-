@@ -21,17 +21,19 @@ public:
 	Sprite* getSprite();
 	Vec2 getPosition();
 	void addForce(Vec2 force);
+	void kill(float delay = 0.0f);
+	Mat4 rotation;
 	Vec2 position;
 	Vec2 acceleration;
 	Vec2 velocity;
-	float theta/*=0.0f*/;//gets the rotation(no duh)//Stephen put this in the protected 
-	
+	float theta=0.0f;//gets the rotation(no duh)//Stephen put this in the protected 
+	float radius;
 protected: //we're using protected so that spaceship, projectiles, and asteroid can still access of the objects from character
 	Sprite* sprite;
-	mat4 rotation;
+	/*mat4 rotation;*/
 	float maxVelocity = 100.0f;
 	float maxAcceleration = 1000.0f;
-	float rotationSpeed = 100.0f;
+	
 private:
 
 };

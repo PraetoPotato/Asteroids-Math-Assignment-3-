@@ -101,6 +101,31 @@ mat4 mat4::operator*(const mat4 & m) const//m is matrix
 	);
 }
 
+mat4 mat4::operator=(const mat4 & m) 
+{
+	return mat4(*this
+		/*col[0][0] = m[0][0],
+		col[0][1] = m[0][1],
+		col[0][2] = m[0][2],
+		col[0][3] = m[0][3],
+
+		col[1][0] = m[1][0],
+		col[1][1] = m[1][1],
+		col[1][2] = m[1][2],
+		col[1][3] = m[1][3],
+
+		col[2][0] = m[2][0],
+		col[2][1] = m[2][1],
+		col[2][2] = m[2][2],
+		col[2][3] = m[2][3],
+
+		col[3][0] = m[3][0],
+		col[3][1] = m[3][1],
+		col[3][2] = m[3][2],
+		col[3][3] = m[3][3])*/);
+	/*);*/
+}
+
 mat4 mat4::getTranspose() const
 {
 	mat4 temp;

@@ -31,7 +31,7 @@
 #include "proj.win32/SpaceShip.h"
 #include "proj.win32/Projectiles.h"
 #include "proj.win32/Asteroids.h"
-
+#include "proj.win32/Hogue.h"
 
 
 class HelloWorld : public cocos2d::Scene
@@ -75,15 +75,18 @@ private:
 	std::vector<Characters*> Lazers;
 	std::vector<Characters*> Ast;
 	std::vector<Characters*> Enemy;
+	std::vector<Characters*> PowerOrbs;
 
 	
 	SpaceShip*shipp;
+	Hogue*finalboss;
 	Characters *HUD;
 	Characters *lazer;
 	Characters *planet;
 	Characters *ast;
 	Characters *enemy;
 	Characters *powerups;
+	Characters *powerOrb;
 
 	//bool for keyInput
 	bool isUp;

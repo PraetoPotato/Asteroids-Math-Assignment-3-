@@ -22,7 +22,8 @@ void Characters::load(Vec2 position, std::string spritePath)
 	sprite->setAnchorPoint(Vec2(0.5, 0.5));//the point which the sprite rotates around
 
 	auto body = PhysicsBody::createCircle((sprite->getSpriteFrame()->getRectInPixels().size.height) * 0.5f * 0.65f); //Use a circle since the bird is roughly circular
-	//auto body = PhysicsBody::createCircle(32.0f); //Use a circle since the bird is roughly circular
+	radius = sprite->getSpriteFrame()->getRectInPixels().size.height*0.5f*0.65f;
+																													 //auto body = PhysicsBody::createCircle(32.0f); //Use a circle since the bird is roughly circular
 	/*std::cout << sprite->getSpriteFrame()->getRectInPixels().size.height * sprite->getScale() * 0.5f << std::endl;*/
 }
 
@@ -32,9 +33,11 @@ void Characters::update(float deltaTime)
 	/*
 	
 	*/
-	mat4 identity;
-	/*rotation = identity.getIdentity();*/
-	identity.getIdentity().RotateZ(theta);
+	rotation=Mat4::IDENTITY;
+	rotation.translate(Vec3(sprite->getCenterRect().size.width* sprite->getAnchorPoint().x, sprite->getCenterRect().size.width* sprite->getAnchorPoint().y, 0.0f));
+	rotation.rotateZ(theta);
+	rotation.translate(-Vec3(sprite->getCenterRect().size.width* sprite->getAnchorPoint().x, sprite->getCenterRect().size.width* sprite->getAnchorPoint().y, 0.0f));
+	/*rotation=Mat4::IDENTITY;*/
 	sprite->setAdditionalTransform((Mat4*)(&rotation));
 
 	velocity += acceleration * deltaTime;

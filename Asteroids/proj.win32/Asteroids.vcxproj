@@ -156,6 +156,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="main.cpp" />
     <ClCompile Include="matrix.cpp" />
     <ClCompile Include="Projectiles.cpp" />
+    <ClCompile Include="Hogue.cpp" />
     <ClCompile Include="SpaceShip.cpp" />
     <ClCompile Include="Vect4.cpp" />
   </ItemGroup>
@@ -165,6 +166,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Ast.h" />
     <ClInclude Include="Asteroids.h" />
     <ClInclude Include="Characters.h" />
+    <ClInclude Include="Hogue.h" />
     <ClInclude Include="Projectiles.h" />
     <ClInclude Include="matrix.h" />
     <ClInclude Include="Vect4.h" />
